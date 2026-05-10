@@ -33,6 +33,7 @@ function ensureSeed(state: AppPersistedState): AppPersistedState {
 }
 
 const APP_DOC_TITLE = 'Artemis calling lists'
+const TSHAPE2_SEED_PATH = `${import.meta.env.BASE_URL}seeds/tshape2-prospects-southwest.csv`
 
 export default function App() {
   const [state, setState] = useState<AppPersistedState>(() => ensureSeed(loadState()))
@@ -261,7 +262,7 @@ export default function App() {
               <h2>No contacts yet</h2>
               <p>Import a CSV to map columns and build your calling list.</p>
               <p className="empty-sample muted">
-                <a href="/seeds/tshape2-prospects-southwest.csv" download>
+                <a href={TSHAPE2_SEED_PATH} download>
                   Download sample southwest prospect CSV
                 </a>{' '}
                 — then Import, enable <strong>First row is header</strong>, and confirm column mapping.
