@@ -113,3 +113,4 @@ Import with **First row is header** checked. Use **Apply prospecting seed preset
 - Seed list (repo): [`samples/tshape2-prospects-southwest.csv`](../samples/tshape2-prospects-southwest.csv)
 - Same file while dev server is running: **`/seeds/tshape2-prospects-southwest.csv`** (empty state offers a download link)
 - Column mapping logic: [`src/lib/mapping.ts`](../src/lib/mapping.ts)
+- Prospecting methodology and green-flag codebook: [`docs/tshape2-prospecting-methodology.md`](./tshape2-prospecting-methodology.md)

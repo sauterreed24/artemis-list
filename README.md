@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+# Artemis Calling Lists
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**A fast, local-only calling desk for prospecting Artemis T-Shape 2 buyers.**
 
-Currently, two official plugins are available:
+[Open the live app](https://sauterreed24.github.io/artemis-list/) on a computer, tablet, or phone. No GitHub account is needed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Direct links:
 
-## React Compiler
+- App: [https://sauterreed24.github.io/artemis-list/](https://sauterreed24.github.io/artemis-list/)
+- Southwest T-Shape 2 prospect CSV: [https://sauterreed24.github.io/artemis-list/seeds/tshape2-prospects-southwest.csv](https://sauterreed24.github.io/artemis-list/seeds/tshape2-prospects-southwest.csv)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What This Is
 
-## Expanding the ESLint configuration
+Artemis Calling Lists turns a CSV into a focused cold-call cockpit. It is built for one job: help a caller move through qualified prospects quickly while keeping the pitch grounded in real source context.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+The included T-Shape 2 Southwest seed is a 150-row prospecting list for Arizona, Colorado, and New Mexico med spas, medical aesthetics practices, wellness clinics, body-contouring studios, and GLP-1 or medical weight-loss clinics. Each row is structured for a caller: phone, location, target decision-maker role, public source URL, green-flag buying signals, and a concise call hook.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Why It Exists
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+T-Shape 2 is a non-invasive body-shaping platform. The best outbound targets are clinics already talking about body contouring, cellulite, skin tightening, post-weight-loss body confidence, GLP-1 follow-up, or medical aesthetics growth.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+This app keeps that context visible while dialing:
+
+- who to ask for,
+- why the practice fits,
+- what public signal earned the call,
+- what opener is safe and specific,
+- where the source came from.
+
+## How To Use It
+
+1. Open [the live app](https://sauterreed24.github.io/artemis-list/).
+2. Download the built-in Southwest prospect CSV from the empty screen, or use the direct CSV link above.
+3. Click **Import CSV**.
+4. Turn on **First row is header**.
+5. Confirm the prospecting seed mapping.
+6. Start calling from the board.
+7. Update notes as you learn who owns the buying decision.
+8. Export the list when you want a backup.
+
+Everything runs in the browser. There is no login, no server database, and no CRM sync. Your working call notes are stored in that browser's local storage until you export or clear them.
+
+## What Is In The Seed
+
+The canonical CSV lives at [`samples/tshape2-prospects-southwest.csv`](samples/tshape2-prospects-southwest.csv) and is mirrored into [`public/seeds/tshape2-prospects-southwest.csv`](public/seeds/tshape2-prospects-southwest.csv) for the live app.
+
+Columns:
+
+`company, first_name, last_name, phone, email, city, state, green_flags, dm_target, notes, source_url`
+
+Green-flag codes include:
+
+- `GLP1`
+- `BODY`
+- `CELLULITE`
+- `SKIN_TIGHTENING`
+- `COOLSCULPTING`
+- `EMSCULPT`
+- `MORPHEUS8`
+- `MEDICAL_OVERSIGHT`
+- `REVIEWS`
+- `MULTI_LOCATION`
+- `GROWTH`
+
+The methodology and call-safe language are documented in [`docs/tshape2-prospecting-methodology.md`](docs/tshape2-prospecting-methodology.md).
+
+## Development
+
+```bash
+npm ci
+npm run prospects:validate
+npm run lint
+npm run build
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Useful scripts:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run prospects:sync` mirrors the canonical sample CSV into the public seed path.
+- `npm run prospects:validate` checks row count, header order, required fields, state coverage, phone normalization, duplicate phones, duplicate company/location rows, approved green flags, source URLs, and sample/public drift.
+- `npm run lint` checks source quality.
+- `npm run build` creates the deployable static app in `dist/`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Deployment
+
+The app deploys to GitHub Pages from `main` using `.github/workflows/pages.yml`.
+
+Public URL after deployment:
+
+[https://sauterreed24.github.io/artemis-list/](https://sauterreed24.github.io/artemis-list/)

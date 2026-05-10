@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "prospects:sync": "node scripts/gen-tshape2-csv.mjs",
+    "prospects:validate": "node scripts/validate-tshape2-csv.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

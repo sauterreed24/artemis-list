@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 // Dedicated dev port: many Vite apps default to 5173; if another project (or an old
 // server) is still bound there, the browser can show the wrong site at localhost:5173.
 export default defineConfig({
+  base: '/artemis-list/',
   plugins: [react()],
   server: {
     port: 5180,
